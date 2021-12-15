@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realtimescraper-deployment
+  labels:
+    app: realtimescraper
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: realtimescraper
+  template:
+    metadata:
+      labels:
+        app: realtimescraper
+    spec:
+      containers:
+      - name: realtimescraper
+        image: sandermoon/realtimescraper:latest
+        ports:
+        - containerPort: 5000
